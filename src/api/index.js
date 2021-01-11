@@ -19,6 +19,7 @@ axios.defaults.baseURL = constants.REMOTE_BASE_URL
 axios.interceptors.request.use(config => {
   // 如果访问的不是OAuth授权服务Endpoint
   // TODO 这里应该做一些更细致的检查，譬如是否跨域，不应将Token发送到域外地址
+  console.log("option....", option.isSessionAvailable());
   if (config.baseURL !== constants.AUTH_BASE_URL) {
     // 并且Session有效，就自动在请求Header中带上JWT令牌
     if (option.isSessionAvailable()) {
